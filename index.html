@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h3>{{ person.name }} --- {{ person.age }}</h3>
+    <h3>{{ person.hobby }}</h3>
+    <ul>
+      <li>漳卅</li>
+      <li>广州</li>
+      <li>郑州</li>
+    </ul>
+    <h1 v-bind:style="'color:' + color">{{ msg }}</h1>
+    <input type="text" v-model="msg">
+    <div v-html="html"></div>
+    <div v-text="text"></div>
+    <button @click="clickHandler">按钮</button>
+    <button v-on:click="clickHandler2">按钮2</button>
+  </div>
+  <script src="./MVue/MVue.js"></script>
+  <script src="./MVue/Observer.js"></script>
+  <script src="./MVue//Watcher.js"></script>
+  <script>
+    var vm = new MVue({
+      el: '#app',
+      data: {
+        color: 'red',
+        person: {
+          name: '张三',
+          age: '32',
+          hobby: '打游戏'
+        },
+        msg: 'good',
+        html: '<h1>我是H1标签</h1>',
+        text: '我是普通文本标签'
+      },
+      methods: {
+        clickHandler() {
+          console.log('hello world')
+          this.msg = 'world'
+        },
+        clickHandler2() {
+          console.log('你好世界2')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
